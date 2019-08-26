@@ -161,7 +161,7 @@ export default class Transcription2Array extends Component {
       .data(data)
       .enter()
       .append("rect")
-      .attr("class", "bar")
+      .attr("class", (d) => ("bar " + d.base))
       .attr("x", function(d) {
         return x(d.index) - rectX / 2;
       })
@@ -228,7 +228,6 @@ export default class Transcription2Array extends Component {
       var s = d3.event.selection || x2.range();
       x.domain(s.map(x2.invert));
       let changeInPixels = x(2) - x(1) - 1;
-      console.log(changeInPixels, x(1), x(2), x.domain(), x.range());
       focus
         .selectAll(".bar")
         .attr("x", function(d) {
