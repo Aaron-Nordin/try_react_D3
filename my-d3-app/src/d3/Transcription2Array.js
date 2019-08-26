@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
-// import sp500 from "./sp500.csv";
 import "./Transcription2.css";
 
 export default class Transcription2Array extends Component {
@@ -30,6 +29,7 @@ export default class Transcription2Array extends Component {
       obj.base = arr[i];
       data.push(obj);
     }
+    console.log(data)
     return data;
   };
 
@@ -40,8 +40,6 @@ export default class Transcription2Array extends Component {
       width = +node.attr("width") - margin.left - margin.right,
       height = +node.attr("height") - margin.top - margin.bottom,
       height2 = +node.attr("height") - margin2.top - margin2.bottom;
-
-    // var parseDate = d3.timeParse("%b %Y");
 
     var x = d3.scaleLinear().range([0, width]),
       x2 = d3.scaleLinear().range([0, width]),
@@ -255,12 +253,6 @@ export default class Transcription2Array extends Component {
       focus.select(".axis--x").call(xAxis);
       context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
     }
-
-    // function type(d) {
-    //   d.date = parseDate(d.date);
-    //   d.price = +d.price;
-    //   return d;
-    // }
   };
 
   render() {
